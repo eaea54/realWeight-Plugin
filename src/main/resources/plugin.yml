@@ -1,0 +1,5 @@
+name: Skill
+version: '${version}'
+main: com.eaea54.skill.Skill
+api-version: 1.19
+description: by eaea54
