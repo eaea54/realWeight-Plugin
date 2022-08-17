@@ -4,6 +4,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.player.PlayerAttemptPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -74,6 +77,19 @@ public class ItemEvent implements Listener {
     @EventHandler
     public void dropItem(PlayerDropItemEvent e) {
         Player player = e.getPlayer();
+        map.replace(player.getUniqueId(),weight(player)) ;
+    }
+
+    public void moveItem(InventoryMoveItemEvent e) {
+        Player player = (Player) e.getInitiator().getViewers().get(0);
+        map.replace(player.getUniqueId(),weight(player)) ;
+    }
+    public void craftItem(CraftItemEvent e) {
+        Player player = (Player) e.getWhoClicked();
+        map.replace(player.getUniqueId(),weight(player)) ;
+    }
+    public void itemInteract(InventoryClickEvent e) {
+        Player player = (Player) e.getWhoClicked();
         map.replace(player.getUniqueId(),weight(player)) ;
     }
 
