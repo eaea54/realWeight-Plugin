@@ -11,7 +11,7 @@ import java.util.UUID;
 //***NOT USED***
 public class JoinEvent implements Listener {
 
-
+    @Deprecated
     @EventHandler
     public void playerJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
