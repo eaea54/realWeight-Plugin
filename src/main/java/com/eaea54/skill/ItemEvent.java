@@ -20,15 +20,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class ItemEvent implements Listener {
-    HashMap<UUID, Integer> map = new HashMap<>();
+    HashMap<UUID, Integer> map = new HashMap<>(); //몰라 어떻게 쓸지..
     FileConfiguration config = Skill.plugin.getConfig();
-
-    @EventHandler
-    public void playerJoin(PlayerJoinEvent e) {
-        Player player = e.getPlayer();
-        int weight=weight(player);
-        map.put(player.getUniqueId(), weight);
-    }
 
     public void slowness(Player player, int weight) {
         for(PotionEffect effect : player.getActivePotionEffects()) {
@@ -73,47 +66,6 @@ public class ItemEvent implements Listener {
         return weight;
     }
 
-    @EventHandler
-    public void getItem(PlayerAttemptPickupItemEvent e) {
-        Player player = e.getPlayer();
-        int weight=weight(player);
-        map.put(player.getUniqueId(), weight);
-    }
-
-    @EventHandler
-    public void dropItem(PlayerDropItemEvent e) {
-        Player player = e.getPlayer();
-        int weight=weight(player);
-        map.put(player.getUniqueId(), weight);
-    }
-
-    @EventHandler
-    public void moveItem(InventoryMoveItemEvent e) {
-        Player player = (Player) e.getInitiator().getViewers().get(0);
-        int weight=weight(player);
-        map.put(player.getUniqueId(), weight);
-    }
-
-    @EventHandler
-    public void craftItem(CraftItemEvent e) {
-        Player player = (Player) e.getWhoClicked();
-        int weight=weight(player);
-        map.put(player.getUniqueId(), weight);
-    }
-
-    @EventHandler
-    public void itemInteract(InventoryClickEvent e) {
-        Player player = (Player) e.getWhoClicked();
-        int weight=weight(player);
-        map.put(player.getUniqueId(), weight);
-    }
-
-    @EventHandler
-    public void respawnItem(PlayerRespawnEvent e) {
-        Player player = e.getPlayer();
-        int weight=weight(player);
-        map.put(player.getUniqueId(), weight);
-    }
 
     @EventHandler
     public void holdClock(PlayerItemHeldEvent e) {
@@ -124,17 +76,4 @@ public class ItemEvent implements Listener {
 
         }
     }
-    /*public int[] getData(String item, int stack, Player player) {
-        int weight = (config.getInt(item)*stack);
-        map.putIfAbsent(player.getUniqueId(), 0);
-        int value = map.get(player.getUniqueId());
-        return new int[] {value,weight};
-    }*/
-
-    /*
-
-    @EventHandler
-    public void  ItemMove(InventoryMoveItemEvent e) {
-        Player player = e.
-    }*/
 }
