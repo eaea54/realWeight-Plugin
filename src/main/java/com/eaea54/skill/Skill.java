@@ -12,6 +12,8 @@ public final class Skill extends JavaPlugin {
         plugin =this;
         getLogger().info("[plugin start!]");
         Bukkit.getPluginManager().registerEvents(new ItemEvent(), this);
+        getCommand("clock").setExecutor(new clockCommand());
+        clockCommand C = new clockCommand();
         this.getServer().getScheduler().runTaskTimer(this, new Runnable() {
             public void run() {
                 for(Player player : Bukkit.getServer().getOnlinePlayers())

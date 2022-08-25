@@ -3,3 +3,8 @@ version: '${version}'
 main: com.eaea54.skill.Skill
 api-version: 1.19
 description: by eaea54
+commands:
+  clock:
+    description: decide whether the clock will continue to be visible.
+    usage: /clock <true/false>
+    aliases: [c]
